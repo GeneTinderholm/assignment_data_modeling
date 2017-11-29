@@ -54,8 +54,8 @@ If-Currently = bool
 
 Relationship
 
-	|--------------Course ----------------|
-	|                                     |
+|--------------Course ----------------|
+|                                     |
 Students----------------------------Teachers
 
 
@@ -155,7 +155,6 @@ Users can post links.
 Entities:
 
 User
-ID
 Message  
 
 Replies
@@ -170,20 +169,35 @@ Attributes:
 
 User:
 
-First Name = string
-Last Name = string
+Userame = string
 ID = integer
 Profile = string for path
-City = string
-Country = string
-Next Subdivision (after country) = string
-Age = string
-Gender = string
 
+Message:
+
+ID = integer
+UserID = integer
+First Message in Thread: integer
+Content = string
+
+Board:
+
+Board ID: integer
+Board Name: string
+
+Thread:
+
+Thread ID: integer
+Thread Name: string
+Board ID: integer
+Messages: Array of MessageIDs
 
 Relationship
 
-	|--------------User----------------|
+User----------------Message-------First Message (Thread ID)------------Board
+                      |
+                      |
+                   Next Message
 
 Tables
 
@@ -192,7 +206,27 @@ Tables
 | Users                    | right-aligned |
 
 Table: Users
-| UserID                   | First Name    | Last Name     | Profile                          | City                           | Country   | Subdivision | Age          | Gender    |
-| ------------------------ |:-------------:| -------------:| --------------------------------:| ------------------------------:| ---------:|------------:| ------------:| ---------:|
-| 1                        | Gene          | Tinderholm    | 'facebook.com/gene'              | Savage                         | US        | MN          | 27           | Male      |
-| 2                        | Steven        | Li            | 'facebook.com/steven'            | Berkeley                       | US        | CA          | 19           | Male      |
+| UserID                   | Username    | Profile                          |
+| ------------------------ |:-----------:| --------------------------------:|
+| 1                        | jimothy97   | 'messagenews.com/jomothy97'      |
+| 2                        | bucket_head | 'messagenews.com/bucket_head'    |
+
+Table: Message
+| MessageID                | UserID      | ThreadID    |   Body                                             |
+| ------------------------ |:-----------:| -----------:| --------------------------------------------------:|
+| 1                        | 2           | 1           | 'user post'                                        |
+| 2                        | 5           | 5           | 'disagreement! Internet argument! Rabble rabble!'  |
+
+Table: Board
+
+| Board ID |  Board Name  |
+| --------:|:------------:|
+| 1        | 'gardening'  |
+| 2        | 'cats'       |
+
+
+Table: Thread
+| ThreadID                | Thread Name      | BoardID    |   Messages                                             |
+| ----------------------- |:----------------:| ----------:| ------------------------------------------------------:|
+| 1                       | 'emacs?'         | 2          | [1, 5, 9, 42, 199]                                     |
+| 2                       | 'cat picturs'    | 2          | [3, 8, 41, 654, 65131263541351354]                     |
