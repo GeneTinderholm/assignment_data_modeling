@@ -98,9 +98,7 @@ Table: teachers to courses
 | 1                        | 2             | True          |
 
 
-
-
---------------------------------------------------
+------------------------------------------------------------
 
 
 Profile To User Database:
@@ -112,6 +110,61 @@ Profile Page for each User
 Entities:
 
 User
+
+Attributes:
+
+User:
+
+First Name = string
+Last Name = string
+ID = integer
+Profile = string for path
+City = string
+Country = string
+Next Subdivision (after country) = string
+Age = string
+Gender = string
+
+
+Relationship
+
+	|--------------User----------------|
+
+Tables
+
+| Tables                   | Are           |
+| ------------------------ |:-------------:|
+| Users                    | right-aligned |
+
+Table: Users
+| UserID                   | First Name    | Last Name     | Profile                          | City                           | Country   | Subdivision | Age          | Gender    |
+| ------------------------ |:-------------:| -------------:| --------------------------------:| ------------------------------:| ---------:|------------:| ------------:| ---------:|
+| 1                        | Gene          | Tinderholm    | 'facebook.com/gene'              | Savage                         | US        | MN          | 27           | Male      |
+| 2                        | Steven        | Li            | 'facebook.com/steven'            | Berkeley                       | US        | CA          | 19           | Male      |
+
+
+--------------------------------------------------
+
+Message Board Database:
+
+Goals/Needs:
+
+Every user to message board.
+Users can post links.
+
+Entities:
+
+User
+ID
+Message  
+
+Replies
+
+Join Message to Users
+
+Join Replies to Message
+
+
 
 Attributes:
 
